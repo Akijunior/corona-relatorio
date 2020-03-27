@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/home.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitore</title>
+</head>
+<body>
+{% block content %} {% endblock %}
+
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+{% block js %} {% endblock %}
+</body>
+</html>

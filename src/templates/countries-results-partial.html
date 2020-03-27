@@ -1,0 +1,35 @@
+<table>
+    <thead>
+    <tr>
+        <th>País</th>
+        <th>Total de Casos</th>
+        <th>Casos Hoje</th>
+        <th>Total de Mortes</th>
+        <th>Mortes Hoje</th>
+        <th>Total de Recuperações</th>
+        <th>Ativos</th>
+        <th>Críticos</th>
+        <th>Por milhares</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% if dados %}
+        {% for data in dados %}
+            <tr>
+                <td>{{ data.country }}</td>
+                <td>{{ data.cases }}</td>
+                <td>{{ data.todayCases }}</td>
+                <td>{{ data.deaths }}</td>
+                <td>{{ data.todayDeaths }}</td>
+                <td>{{ data.recovered }}</td>
+                <td>{{ data.active }}</td>
+                <td>{{ data.critical }}</td>
+                <td>{{ data.casesPerOneMillion }}</td>
+            </tr>
+            {% empty %}
+            <h3>Sem correspondências</h3>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>

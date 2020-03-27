@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="align-my-block">
+
+        {% include 'navbar.html' %}
+
+        {% include 'countries-select-partial.html' %}
+
+        <div id="country-historical">
+            {% include 'countries-historical-partial.html' %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+    <script src="{% static 'js/select_country.js' %}"></script>
+{% endblock %}

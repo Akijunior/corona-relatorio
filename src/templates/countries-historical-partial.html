@@ -1,0 +1,60 @@
+{% load date_tags %}
+
+<div class="row">
+    <div class="col s4">
+        <table>
+            <thead>
+            <tr>
+                <th>Data</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if dates %}
+                {% for date in dates %}
+                    <tr>
+                        <td>{% current_time date %}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col s4">
+        <table>
+            <thead>
+            <tr>
+                <th>Total de Casos</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for case in cases %}
+                <tr>
+                    <td>{{ case }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col s4">
+        <table>
+            <thead>
+            <tr>
+                <th>Total de Mortes</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for death in deaths %}
+                <tr>
+                    <td>{{ death }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,8 @@
+<div class="input-field col s12">
+    <select id="selected-country" name="selected-country">
+      <option value="" disabled selected>Selecione o País do qual deseja ver o histórico</option>
+        {% for country in countries %}
+            <option value="{{ country.country }}">{{ country.country }}</option>
+        {% endfor %}
+    </select>
+  </div>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="align-my-block">
+
+        {% include 'navbar.html' %}
+
+        <div id="replaceable-content">
+            {% include 'countries-results-partial.html' %}
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/country.js' %}"></script>
+{% endblock %}

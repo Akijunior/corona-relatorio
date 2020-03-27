@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+
+  db:
+    container_name: "monitore_db"
+    image: postgres
+    env_file:
+    - config/db/savra_env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+    - "5433:5432"
+
+  web:
+    container_name: "monitore_api"
+    build: .
+    command: sh /webapps/startup.sh
+    volumes:
+      - .:/webapps
+    ports:
+      - "5440:5440"
+    links:
+      - db
+    depends_on:
+      - db
+
+volumes:
+  db-data:
