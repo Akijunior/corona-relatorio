@@ -45,10 +45,13 @@ def historico(request):
 
         context['dates'] = historic['timeline']['cases']
         context['cases'] = list(context['dates'].values())
+        context['casesOnDay'] = [context['cases'][0], ]
         context['deaths'] = historic['timeline']['deaths'].values()
         context['historic'] = historic
 
-        # print("Par: ", selected_country_info[0])
+        for i in range(len(context['cases']) - 1):
+            case = context['cases'][i+1] - context['cases'][i]
+            context['casesOnDay'].append(case)
 
         html = render_to_string(
             template_name="countries-historical-partial.html", context=context

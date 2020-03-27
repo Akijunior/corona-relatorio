@@ -1,7 +1,7 @@
 {% load date_tags %}
 
 <div class="row">
-    <div class="col s4">
+    <div class="col s3">
         <table>
             <thead>
             <tr>
@@ -20,7 +20,7 @@
             </tbody>
         </table>
     </div>
-    <div class="col s4">
+    <div class="col s3">
         <table>
             <thead>
             <tr>
@@ -36,9 +36,28 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+
+    <div class="col s3">
+        <table>
+            <thead>
+            <tr>
+                <th>Casos no dia</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for case in casesOnDay %}
+                <tr>
+                    <td>{{ case }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
     </div>
-    <div class="col s4">
+
+    <div class="col s3">
         <table>
             <thead>
             <tr>
