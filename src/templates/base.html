@@ -10,7 +10,14 @@
     <title>Monitore</title>
 </head>
 <body>
-{% block content %} {% endblock %}
+    <div class="align-my-block">
+
+        {% include 'navbar.html' %}
+
+        {% block content %} {% endblock %}
+
+    </div>
+
 
 <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'js/materialize.min.js' %}"></script>

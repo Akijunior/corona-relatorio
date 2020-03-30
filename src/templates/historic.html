@@ -4,17 +4,12 @@
 
 {% block content %}
 
-    <div class="align-my-block">
+    {% include 'countries-select-partial.html' %}
 
-        {% include 'navbar.html' %}
-
-        {% include 'countries-select-partial.html' %}
-
-        <div id="country-historical">
-            {% include 'countries-historical-partial.html' %}
-        </div>
-
+    <div id="country-historical">
+        {% include 'countries-historical-partial.html' %}
     </div>
+
 {% endblock %}
 
 {% block js %}

@@ -1,8 +1,8 @@
 from django.urls import path
 
-from apps.core.views import home, historico
+from apps.core import views
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('historico/', historico, name='historico'),
+    path('', views.home, name='home'),
+    path('historico/', views.historico, name='historico'),
 ]

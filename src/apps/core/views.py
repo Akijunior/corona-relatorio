@@ -5,9 +5,13 @@ import requests
 from django.http import JsonResponse
 from django.shortcuts import render
 
+import numpy as np
+
 # Create your views here.
 from django.template.defaultfilters import upper
 from django.template.loader import render_to_string
+
+from apps.utils.cases import get_scenario_on_day
 
 
 def home(request):
@@ -45,13 +49,10 @@ def historico(request):
 
         context['dates'] = historic['timeline']['cases']
         context['cases'] = list(context['dates'].values())
-        context['casesOnDay'] = [context['cases'][0], ]
-        context['deaths'] = historic['timeline']['deaths'].values()
+        context['casesOnDay'] = get_scenario_on_day(context['cases'])
+        context['deaths'] = list(historic['timeline']['deaths'].values())
+        context['deathsOnDay'] = get_scenario_on_day(context['deaths'])
         context['historic'] = historic
-
-        for i in range(len(context['cases']) - 1):
-            case = context['cases'][i+1] - context['cases'][i]
-            context['casesOnDay'].append(case)
 
         html = render_to_string(
             template_name="countries-historical-partial.html", context=context

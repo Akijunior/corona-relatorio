@@ -1,7 +1,7 @@
 {% load date_tags %}
 
 <div class="row">
-    <div class="col s3">
+    <div class="col s2">
         <table>
             <thead>
             <tr>
@@ -38,7 +38,7 @@
         </table>
     </div>
 
-    <div class="col s3">
+    <div class="col s2">
         <table>
             <thead>
             <tr>
@@ -66,6 +66,23 @@
             </thead>
             <tbody>
             {% for death in deaths %}
+                <tr>
+                    <td>{{ death }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col s2">
+        <table>
+            <thead>
+            <tr>
+                <th>Mortes no dia</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for death in deathsOnDay %}
                 <tr>
                     <td>{{ death }}</td>
                 </tr>
