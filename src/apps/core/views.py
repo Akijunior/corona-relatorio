@@ -12,6 +12,7 @@ from django.template.defaultfilters import upper
 from django.template.loader import render_to_string
 
 from apps.utils.cases import get_scenario_on_day
+from apps.utils.date_adjustment import date_adjustment
 
 
 def home(request):
@@ -36,7 +37,6 @@ def home(request):
 
 
 def historico(request):
-    historics = requests.get('https://corona.lmao.ninja/historical').json()
     countries = requests.get('https://corona.lmao.ninja/countries').json()
 
     if request.is_ajax():
@@ -54,12 +54,31 @@ def historico(request):
         context['deathsOnDay'] = get_scenario_on_day(context['deaths'])
         context['historic'] = historic
 
+        context['adjusted_dates'] = [date_adjustment(date) for date in historic['timeline']['cases'].keys()]
+
         html = render_to_string(
             template_name="countries-historical-partial.html", context=context
         )
         data_dict = {"html_from_view": html}
 
-        return JsonResponse(data=data_dict, safe=False)
+        valores = [{'name': context['adjusted_dates'][i], 'y': context['deathsOnDay'][i]}
+                   for i in range(len(context['dates']))]
 
+        chart = {
+            'chart': {'type': 'column'},
+            'title': {'text': 'Impacto de Mortes por Corona'},
+            'series': [{
+                'name': 'Número de vítimas',
+                'data': valores
+            }],
+            'xAxis': {
+                'categories': context['adjusted_dates']
+            }
+        }
+
+        data_dict['html_to_chart'] = chart
+
+
+        return JsonResponse(data=data_dict, safe=False)
 
     return render(request, 'historic.html', {'countries': countries})

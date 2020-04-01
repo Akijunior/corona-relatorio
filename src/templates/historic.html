@@ -10,6 +10,12 @@
         {% include 'countries-historical-partial.html' %}
     </div>
 
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+
+    <div id="country-graph">
+    </div>
+
 {% endblock %}
 
 {% block js %}

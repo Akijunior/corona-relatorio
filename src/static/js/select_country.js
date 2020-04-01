@@ -1,5 +1,6 @@
 var selected = $('#selected-country');
 const countries_div = $('#country-historical');
+const country_graph_div = $('#country-graph');
 const endpoint = '/historico/';
 const delay_by_in_ms = 700;
 let scheduled_function = false;
@@ -19,7 +20,10 @@ function showCountryHistoric() {
             countries_div.fadeTo('slow', 0).promise().then(() => {
                 countries_div.html(response['html_from_view']);
                 countries_div.fadeTo('slow', 1);
-            })
+            });
+
+            Highcharts.chart("country-graph", response['html_to_chart']);
+
         },
         error: function (e) {
             alert('error');
